@@ -9,7 +9,6 @@ var configModule = require(__basedir + 'api/modules/configModule');
 
 
 function query(req, res, next) {
-	console.log("enter");
   if (req.body.algos!==undefined&&req.body.region!==undefined){
 	  var bestAlgo="";
 	  var bestProfitability=0;
