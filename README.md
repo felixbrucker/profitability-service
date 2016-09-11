@@ -48,6 +48,7 @@ run ``` git pull ```
 
 ### JSON template to query
 
+```sh
 {
 	algos: {
 		x11: {hashrate:150000000},
@@ -60,48 +61,50 @@ run ``` git pull ```
 	region: "eu",
 	name: "Baikal Mini Miner"
 }
+```
 
 Hashrate is in Hash/sec, region can be one of these: ["eu","usa","hk","jp"]
+
 name is optional for stats
 
 ### complete list of supported algos
 
-argon2
-blake2s
-blake256r8
-c11
-decred
-lbry
-lyra2rev2
-m7m
-myr-gr
-neoscrypt
-nist5
-qubit
-quark
-scrypt
-sha256
-sib
-skein
-veltor
-x11
-x11evo
-x13
-x14
-x15
-x17
-yescrypt
-scryptnf
-keccak
-lyra2re
-whirlpoolx
-axiom
-scryptjanenf16
-blake256r14
-blake256r8vnl
-hodl
-daggerhashimoto
-cryptonight
+* argon2
+* blake2s
+* blake256r8
+* c11
+* decred
+* lbry
+* lyra2rev2
+* m7m
+* myr-gr
+* neoscrypt
+* nist5
+* qubit
+* quark
+* scrypt
+* sha256
+* sib
+* skein
+* veltor
+* x11
+* x11evo
+* x13
+* x14
+* x15
+* x17
+* yescrypt
+* scryptnf
+* keccak
+* lyra2re
+* whirlpoolx
+* axiom
+* scryptjanenf16
+* blake256r14
+* blake256r8vnl
+* hodl
+* daggerhashimoto
+* cryptonight
 
 
 ### Todos
