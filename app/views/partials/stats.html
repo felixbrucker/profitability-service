@@ -1,0 +1,9 @@
+<div class="col-md-12">
+	<span ng-show="statsVm.logs">
+		<ul>
+			<li ng-repeat="(key, data) in statsVm.logs track by $index">
+				{{data}}
+			</li>
+		</ul>
+    </span>
+</div>

@@ -1,0 +1,47 @@
+<div class="col-md-12">
+  <form name="config">
+	<table class='table table-borderless'>
+		<thead>
+			<tr>
+				<th>Enabled</th>
+				<th>Pool</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td><input type="checkbox" ng-model="configVm.config.enabled.nicehash" ng-click="configVm.setConfig()"></td>
+				<td>nicehash<td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" ng-model="configVm.config.enabled.zpool" ng-click="configVm.setConfig()"></td>
+				<td>zpool<td>
+			</tr>
+			<!--<tr ng-repeat="(key, data) in configVm.config.enabled track by $index">
+				<td><input type="checkbox" ng-model="data" ng-click="configVm.setConfig()"></td>
+				<td>{{key}} - {{data}}</td>
+			</tr>-->
+		</tbody>
+	</table>
+    
+    <div class="col-md-12" style="margin-bottom: 10px;">
+      <button type="button" class="btn btn-success" ng-disabled="config.$invalid" ng-click="configVm.setConfig()">Save
+      </button>
+      <i ng-show="configVm.waiting" class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+      <span class="sr-only">Loading...</span>
+    </div>
+  </form>
+  
+  <div style="margin-bottom: 10px;">
+    <button ng-show="!configVm.updating" type="button" class="btn btn-success" ng-click="configVm.update()"><i class="fa fa-refresh" aria-hidden="true"></i> Git Pull
+    </button>
+    <button ng-show="configVm.updating" type="button" class="btn btn-success" disabled><i class="fa fa-refresh" aria-hidden="true"></i> update running..
+    </button>
+    <i ng-show="configVm.updating" class="fa fa-cog fa-spin fa-lg fa-fw"></i>
+    <span class="sr-only">Loading...</span>
+  </div>
+  
+  <div class="col-md-12" style="margin-bottom: 10px;">
+      <button type="button" class="btn btn-success" ng-click="configVm.testQuery()">Test Query
+      </button>
+    </div>
+</div>
