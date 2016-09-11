@@ -1,6 +1,6 @@
 {
   apps : {
-    name : "autoswitch-miner",
+    name : "profitability-service",
     script : "main.js",
     watch : true,
     "ignore_watch" : ["node_modules", "app","data",".git"]
