@@ -12,8 +12,10 @@ function query(req, res, next) {
   if (req.body.algos!==undefined&&req.body.region!==undefined){
 	  var bestAlgo="";
 	  var bestProfitability=0;
+	  console.log(req.body.name);
 	  Object.keys(req.body.algos).forEach(function (key) {
 		  if (req.body.algos[key].hashrate !== undefined && key in configModule.algos)
+			  console.log(key+": "+(req.body.algos[key].hashrate * configModule.algos[key].profitability).toFixed(8));
 			  if (req.body.algos[key].hashrate * configModule.algos[key].profitability > bestProfitability){
 				  bestProfitability=req.body.algos[key].hashrate * configModule.algos[key].profitability;
 				  bestAlgo=key;
