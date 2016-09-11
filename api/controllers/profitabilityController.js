@@ -33,6 +33,7 @@ function query(req, res, next) {
 		}
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo}}));
+		res.end();
 	  }
   }else{
 	if (configModule.logs.length===20)
@@ -41,6 +42,7 @@ function query(req, res, next) {
 	configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] failed query with following body: "+req.body);
 	res.setHeader('Content-Type', 'application/json');
 	res.send(JSON.stringify({result: false}));
+	res.end();
   }
 }
 
