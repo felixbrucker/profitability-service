@@ -67,6 +67,27 @@ Hashrate is in Hash/sec, region can be one of these: ["eu","usa","hk","jp"]
 
 name is optional for stats
 
+### JSON template for responses from the server
+
+```sh
+{
+	result: {
+		url: "stratum+tcp://qubit.mine.zpool.ca:4733",
+		profitability: 6.403e-11,
+		pool: "zpool",
+		algo: "qubit"
+	}
+}
+```
+
+in case something is wrong/missing in the query:
+
+```sh
+{
+	result: false
+}
+```
+
 ### complete list of supported algos
 
 * argon2
