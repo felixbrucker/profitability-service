@@ -34,7 +34,7 @@
     function init() {
       angular.element(document).ready(function () {
         vm.getStats();
-        vm.statsInterval = $interval(vm.getStats, 10000);
+        vm.statsInterval = $interval(vm.getStats, 5000);
       });
     }
 
