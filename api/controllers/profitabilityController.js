@@ -68,8 +68,11 @@ function getProfitability(pool) {
       try{
         parsed=JSON.parse(body);
       }catch(error){
-        console.log("Error: Unable to get "+pool+" profitability data");
+        console.log("Error: Unable to get "+pool+" profitability data, retrying in 5 sec...");
         console.log(error);
+		setTimeout(function(){
+			getProfitability(pool);
+		},5000);
       }
       if (parsed != null){
 		switch (pool){
@@ -85,12 +88,14 @@ function getProfitability(pool) {
 				});
 				break;
 		}
-		
       }
     });
   }).on("error", function(error) {
-    console.log("Error: Unable to get "+pool+" profitability data");
+    console.log("Error: Unable to get "+pool+" profitability data, retrying in 5 sec...");
     console.log(error);
+	setTimeout(function(){
+		getProfitability(pool);
+	},5000);
   });
 }
 

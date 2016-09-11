@@ -50,16 +50,16 @@ run ``` git pull ```
 
 ```sh
 {
-	algos: {
-		x11: {hashrate:150000000},
-		x13: {hashrate:150000000},
-		x14: {hashrate:150000000},
-		x15: {hashrate:150000000},
-		quark: {hashrate:150000000},
-		qubit: {hashrate:150000000}
+	"algos": {
+		"x11": {"hashrate":150000000},
+		"x13": {"hashrate":150000000},
+		"x14": {"hashrate":150000000},
+		"x15": {"hashrate":150000000},
+		"quark": {"hashrate":150000000},
+		"qubit": {"hashrate":150000000}
 	},
-	region: "eu",
-	name: "Baikal Mini Miner"
+	"region": "eu",
+	"name": "Baikal Mini Miner"
 }
 ```
 
@@ -71,11 +71,11 @@ name is optional for stats
 
 ```sh
 {
-	result: {
-		url: "stratum+tcp://qubit.mine.zpool.ca:4733",
-		profitability: 6.403e-11,
-		pool: "zpool",
-		algo: "qubit"
+	"result": {
+		"url": "stratum+tcp://qubit.mine.zpool.ca:4733",
+		"profitability": 6.403e-11,
+		"pool": "zpool",
+		"algo": "qubit"
 	}
 }
 ```
@@ -84,7 +84,7 @@ in case something is wrong/missing in the query:
 
 ```sh
 {
-	result: false
+	"result": false
 }
 ```
 
