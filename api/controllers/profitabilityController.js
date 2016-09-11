@@ -31,6 +31,10 @@ function query(req, res, next) {
 			var date=new Date().toJSON();
 			configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] "+req.body.name+" got "+bestAlgo+" on "+configModule.algos[bestAlgo].pool+" with "+bestProfitability.toFixed(8)+" BTC/Day");
 		}
+		if (configModule.logs.length===20)
+			configModule.logs.pop();
+		var date=new Date().toJSON();
+		configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] failed query with following body: "+req.body);
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo}}));
 	  }
