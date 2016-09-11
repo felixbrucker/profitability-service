@@ -134,7 +134,7 @@ function init() {
 	if (configModule.config.enabled.zpool)
 		getProfitability("zpool");
 	
-	var minutes = 1, profitabilityInterval = minutes * 60 * 1000;
+	var minutes = 3, profitabilityInterval = minutes * 60 * 1000;
 	setInterval(function () {
 		if (configModule.config.enabled.nicehash)
 			getProfitability("nicehash");
