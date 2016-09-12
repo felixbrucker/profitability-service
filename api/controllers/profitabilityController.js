@@ -88,7 +88,7 @@ function getProfitability(pool) {
 				break;
 			case "zpool":
 				Object.keys(parsed).forEach(function (key) {
-					setRealProfitability(parsed[key].name,parsed[key].estimate_last24h,pool,parsed[key].port); //last24h for now
+					setRealProfitability(parsed[key].name,parsed[key].estimate_current,pool,parsed[key].port); // might need to workaround high spikes witch remain high despite lower actual estimate
 				});
 				break;
 		}
