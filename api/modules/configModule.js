@@ -57,7 +57,7 @@ var config = module.exports = {
 			lbry:{conversionFactor:2},
 			lyra2v2:{conversionFactor:2, alt:"lyra2rev2"},
 			m7m:{conversionFactor:2},
-			"myr-gr":{conversionFactor:3},
+			"myr-gr":{conversionFactor:2},
 			neoscrypt:{conversionFactor:2},
 			nist5:{conversionFactor:2},
 			qubit:{conversionFactor:2},
