@@ -2,7 +2,7 @@
 
 ### Prerequisites
 
-profitability-service requires [Node.js](https://nodejs.org/) v4+, npm and optionally pm2 to run.
+profitability-service requires nodejs, npm and optionally pm2 to run.
 
 
 ### Installation
