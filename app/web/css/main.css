@@ -19,9 +19,18 @@ body {
     text-align: center;
 }
 
+.nicehash {
+	color: "rgb(254,221,37)";
+}
+
+.zpool {
+	color: "rgb(10,0,132)";
+}
+
 ul {
     display: inline-block;
     text-align: left;
+	list-style-type: none;
 }
 
 ul.centered {
