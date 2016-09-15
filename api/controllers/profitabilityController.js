@@ -75,11 +75,11 @@ function getProfitability(pool) {
       try{
         parsed=JSON.parse(body);
       }catch(error){
-        console.log("Error: Unable to get "+pool+" profitability data, retrying in 5 sec...");
+        console.log("Error: Unable to get "+pool+" profitability data, retrying in 10 sec...");
         console.log(error);
 		setTimeout(function(){
 			getProfitability(pool);
-		},5000);
+		},10000);
       }
       if (parsed != null){
 		switch (pool){
