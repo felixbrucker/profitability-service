@@ -7,6 +7,16 @@ var colors = require('colors/safe');
 
 var configModule = require(__basedir + 'api/modules/configModule');
 
+function convertUTCDateToLocalDate(date) {
+    var newDate = new Date(date.getTime()+date.getTimezoneOffset()*60*1000);
+
+    var offset = date.getTimezoneOffset() / 60;
+    var hours = date.getHours();
+
+    newDate.setHours(hours - offset);
+
+    return newDate;   
+}
 
 function query(req, res, next) {
   if (req.body.algos!==undefined&&req.body.region!==undefined){
@@ -31,7 +41,7 @@ function query(req, res, next) {
 		if (req.body.name!==undefined){
 			if (configModule.logs.length===40)
 				configModule.logs.pop();
-			var date=new Date().toJSON();
+			var date=convertUTCDateToLocalDate(new Date(date_string_you_received)).toJSON();
 			configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] "+req.body.name+" got "+bestAlgo+" on "+configModule.algos[bestAlgo].pool+" with "+bestProfitability.toFixed(8)+" BTC/Day");
 		}
 		res.setHeader('Content-Type', 'application/json');

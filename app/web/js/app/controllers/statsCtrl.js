@@ -48,7 +48,6 @@
         method: 'GET',
         url: 'api/stats'
       }).then(function successCallback(response) {
-		  console.log(response);
         vm.logs = response.data;
       }, function errorCallback(response) {
         console.log(response);
