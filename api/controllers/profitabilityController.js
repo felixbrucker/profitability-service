@@ -41,7 +41,7 @@ function query(req, res, next) {
 		if (req.body.name!==undefined){
 			if (configModule.logs.length===40)
 				configModule.logs.pop();
-			var date=convertUTCDateToLocalDate(new Date(date_string_you_received)).toJSON();
+			var date=convertUTCDateToLocalDate(new Date()).toJSON();
 			configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] "+req.body.name+" got "+bestAlgo+" on "+configModule.algos[bestAlgo].pool+" with "+bestProfitability.toFixed(8)+" BTC/Day");
 		}
 		res.setHeader('Content-Type', 'application/json');
