@@ -64,7 +64,8 @@ function getProfitability(pool) {
 	}
   return https.get({
     host: host,
-    path: path
+    path: path,
+	headers:{'Cache-Control':'no-cache'}
   }, function (response) {
     var body = '';
     response.on('data', function (d) {
