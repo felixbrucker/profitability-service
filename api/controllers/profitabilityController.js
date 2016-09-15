@@ -108,28 +108,30 @@ function getProfitability(pool) {
 
 
 function setRealProfitability(key,profitability,pool,port){
-	var newKey=key;
-	if (configModule.pools[pool].algos[key].alt!==undefined)
-		newKey=configModule.pools[pool].algos[key].alt;
-	var newProfitability=0;
-	switch(configModule.pools[pool].algos[key].conversionFactor){
-		case 0: newProfitability=profitability;
-		  break;
-		case 1: newProfitability=profitability/1000;
-		  break;
-		case 2: newProfitability=profitability/1000000;
-		  break;
-		case 3: newProfitability=profitability/1000000000;
-		  break;
-		case 4: newProfitability=profitability/1000000000000;
-		  break;
-		case 5: newProfitability=profitability/1000000000000000;
-		  break;
-	}
-	if (configModule.algos[newKey].profitability<newProfitability){
-		configModule.algos[newKey].profitability=newProfitability;
-		configModule.algos[newKey].pool=pool;
-		configModule.algos[newKey].port=port;
+	if (configModule.pools[pool].algos[key]!==undefined){
+		var newKey=key;
+		if (configModule.pools[pool].algos[key].alt!==undefined)
+			newKey=configModule.pools[pool].algos[key].alt;
+		var newProfitability=0;
+		switch(configModule.pools[pool].algos[key].conversionFactor){
+			case 0: newProfitability=profitability;
+			  break;
+			case 1: newProfitability=profitability/1000;
+			  break;
+			case 2: newProfitability=profitability/1000000;
+			  break;
+			case 3: newProfitability=profitability/1000000000;
+			  break;
+			case 4: newProfitability=profitability/1000000000000;
+			  break;
+			case 5: newProfitability=profitability/1000000000000000;
+			  break;
+		}
+		if (configModule.algos[newKey].profitability<newProfitability){
+			configModule.algos[newKey].profitability=newProfitability;
+			configModule.algos[newKey].pool=pool;
+			configModule.algos[newKey].port=port;
+		}
 	}
 }
 
