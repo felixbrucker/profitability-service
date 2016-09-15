@@ -127,11 +127,18 @@ function setRealProfitability(key,profitability,pool,port){
 			case 5: newProfitability=profitability/1000000000000000;
 			  break;
 		}
-		if (configModule.algos[newKey].profitability<newProfitability){
+		if (configModule.algos[newKey].pool === pool){
 			configModule.algos[newKey].profitability=newProfitability;
 			configModule.algos[newKey].pool=pool;
 			configModule.algos[newKey].port=port;
+		}else{
+			if (configModule.algos[newKey].profitability<newProfitability){
+				configModule.algos[newKey].profitability=newProfitability;
+				configModule.algos[newKey].pool=pool;
+				configModule.algos[newKey].port=port;
+			}
 		}
+		
 	}
 }
 
@@ -143,7 +150,7 @@ function init() {
 	if (configModule.config.enabled.zpool)
 		getProfitability("zpool");
 	
-	var minutes = 3, profitabilityInterval = minutes * 60 * 1000;
+	var minutes = 2, profitabilityInterval = minutes * 60 * 1000;
 	setInterval(function () {
 		if (configModule.config.enabled.nicehash)
 			getProfitability("nicehash");
