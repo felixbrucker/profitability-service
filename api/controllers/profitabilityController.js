@@ -97,11 +97,11 @@ function getProfitability(pool) {
       }
     });
   }).on("error", function(error) {
-    console.log("Error: Unable to get "+pool+" profitability data, retrying in 5 sec...");
+    console.log("Error: Unable to get "+pool+" profitability data, retrying in 10 sec...");
     console.log(error);
 	setTimeout(function(){
 		getProfitability(pool);
-	},5000);
+	},10000);
   });
 }
 
