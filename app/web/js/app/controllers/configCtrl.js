@@ -112,7 +112,7 @@
          * @desc get the algos
          * @memberOf configCtrl
          */
-        function getConfig() {
+        function getAlgos() {
             return $http({
                 method: 'GET',
                 url: 'api/config/algos'
