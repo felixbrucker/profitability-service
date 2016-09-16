@@ -42,7 +42,8 @@ var config = module.exports = {
 			hodl:{conversionFactor:3},
 			daggerhashimoto:{conversionFactor:3},
 			decred:{conversionFactor:3},
-			cryptonight:{conversionFactor:3}
+			cryptonight:{conversionFactor:3},
+			lbry:{conversionFactor:3}
 		}
 	  },
 	  zpool:{
