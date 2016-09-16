@@ -31,6 +31,7 @@
         vm.setConfig=setConfig;
         vm.update=update;
 		vm.testQuery=testQuery;
+		vm.getAlgos=getAlgos;
 
 
 
