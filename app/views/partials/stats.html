@@ -5,7 +5,7 @@
 	<span ng-show="statsVm.logs">
 		
 		<ul>
-			<li ng-repeat="(key, data) in statsVm.logs track by $index | filter: statsVm.query">
+			<li ng-repeat="(key, data) in statsVm.logs | filter: statsVm.query track by $index">
 				{{data.date}} <span style="color:rgb(61,25,204)">{{data.name}}</span> got <span style="color:rgb(0,202,152)">{{data.algo}}</span> on <span class="{{data.pool}}">{{data.pool}}</span> with <span style="color:rgb(0,149,0)">{{data.profitability}}</span> BTC/Day
 			</li>
 		</ul>
