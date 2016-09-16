@@ -20,7 +20,8 @@
     var vm = this;
     vm.statsInterval = null;
     vm.logs = null;
-
+	vm.query = null;
+	
     // controller API
     vm.init = init;
     vm.getStats = getStats;
