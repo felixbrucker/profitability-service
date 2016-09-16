@@ -45,7 +45,7 @@
 	</button>
   </div>
   
-  <div class="col-md-3 col-md-offset-6" style="margin-bottom: 10px;">
+  <div class="col-md-4 col-md-offset-4" style="margin-bottom: 10px;">
 	<table class='table table-borderless'>
 		<thead>
 			<tr>
@@ -57,7 +57,7 @@
 		<tbody>
 			<tr ng-repeat="(key, data) in configVm.algos track by $index">
 				<td>{{key}}</td>
-				<td>{{data.profitability}}</td>
+				<td>{{data.profitability*1000000}} BTC/MH/Day</td>
 				<td>{{data.pool}}</td>
 			</tr>
 		</tbody>
