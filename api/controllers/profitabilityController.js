@@ -102,13 +102,12 @@ function getProfitability(pool) {
 		switch (pool){
 			case "nicehash":
 				Object.keys(parsed.result.simplemultialgo).forEach(function (key) {
-					if (parsed.result.simplemultialgo[key].algo!==999) //skip ethereum, daggerhashimoto replaced it
-						setRealProfitability(parsed.result.simplemultialgo[key].name,parsed.result.simplemultialgo[key].paying,pool,parsed.result.simplemultialgo[key].port);
+					setRealProfitability(parsed.result.simplemultialgo[key].name,parsed.result.simplemultialgo[key].paying,pool,parsed.result.simplemultialgo[key].port);
 				});
 				break;
 			case "zpool":
 				Object.keys(parsed).forEach(function (key) {
-					setRealProfitability(parsed[key].name,parsed[key].estimate_current,pool,parsed[key].port); // might need to workaround high spikes witch remain high despite lower actual estimate
+					setRealProfitability(parsed[key].name,parsed[key].estimate_current,pool,parsed[key].port);
 				});
 				break;
 		}
