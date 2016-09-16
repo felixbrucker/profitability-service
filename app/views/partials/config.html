@@ -41,7 +41,26 @@
   </div>
   
   <div class="col-md-12" style="margin-bottom: 10px;">
-      <button type="button" class="btn btn-success" ng-click="configVm.testQuery()">Test Query
-      </button>
-    </div>
+	<button type="button" class="btn btn-success" ng-click="configVm.testQuery()">Test Query
+	</button>
+  </div>
+  
+  <div class="col-md-3 col-md-offset-6" style="margin-bottom: 10px;">
+	<table class='table table-borderless'>
+		<thead>
+			<tr>
+				<th>Algo</th>
+				<th>Profitability</th>
+				<th>Pool</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="(key, data) in configVm.algos track by $index">
+				<td>{{key}}</td>
+				<td>{{data.profitability}}</td>
+				<td>{{data.pool}}</td>
+			</tr>
+		</tbody>
+	</table>
+  </div>
 </div>

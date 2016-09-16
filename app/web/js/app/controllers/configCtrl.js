@@ -19,8 +19,10 @@
 
         var vm = this;
         vm.config = null;
+		vm.algos = null;
         vm.updating=null;
 		vm.waiting = null;
+		vm.algoInterval = null;
         
 
         // controller API
@@ -40,6 +42,8 @@
         function init() {
             angular.element(document).ready(function () {
                 vm.getConfig();
+				vm.getAlgos();
+				vm.algoInterval = $interval(vm.getAlgos, 5000);
             });
         }
 
@@ -103,6 +107,22 @@
         }
 		
 		/**
+         * @name getAlgos
+         * @desc get the algos
+         * @memberOf configCtrl
+         */
+        function getConfig() {
+            return $http({
+                method: 'GET',
+                url: 'api/config/algos'
+            }).then(function successCallback(response) {
+                vm.algos = response.data;
+            }, function errorCallback(response) {
+                console.log(response);
+            });
+        }
+		
+		/**
          * @name testQuery
          * @desc sends a testQuery to the server
          * @memberOf configCtrl
@@ -127,8 +147,8 @@
         vm.init();
 
         $scope.$on('$destroy', function () {
-            if (vm.configInterval)
-                $interval.cancel(vm.configInterval);
+            if (vm.algoInterval)
+                $interval.cancel(vm.algoInterval);
         });
     }
 

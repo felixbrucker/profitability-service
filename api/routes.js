@@ -12,6 +12,7 @@ module.exports = function(app) {
   router.get('/config', configController.getConfig);
   router.post('/config', configController.setConfig);
   router.post('/config/update', configController.update);
+  router.get('/config/algos', configController.getAlgos);
 
   router.get('/stats', statsController.getStats);
   

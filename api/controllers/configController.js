@@ -7,6 +7,12 @@ function getConfig(req, res, next) {
   res.setHeader('Content-Type', 'application/json');
   res.send(JSON.stringify(configModule.config));
 }
+
+function getAlgos(req, res, next) {
+  res.setHeader('Content-Type', 'application/json');
+  res.send(JSON.stringify(configModule.algos));
+}
+
 function setConfig(req, res, next) {
   configModule.setConfig(req.body);
   configModule.saveConfig();
@@ -33,3 +39,4 @@ init();
 exports.getConfig = getConfig;
 exports.setConfig = setConfig;
 exports.update = update;
+exports.getAlgos = getAlgos;
