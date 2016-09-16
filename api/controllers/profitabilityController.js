@@ -39,7 +39,7 @@ function query(req, res, next) {
 			result = result.replace("#REGION#", req.body.region);
 		result = result.replace("#PORT#", configModule.algos[bestAlgo].port);
 		if (req.body.name!==undefined){
-			if (configModule.logs.length===40)
+			if (configModule.logs.length===320)
 				configModule.logs.pop();
 			var date=convertUTCDateToLocalDate(new Date()).toJSON();
 			var entry={
@@ -56,10 +56,8 @@ function query(req, res, next) {
 		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo}}));
 	  }
   }else{
-	if (configModule.logs.length===40)
-		configModule.logs.pop();
-	var date=new Date().toJSON();
-	configModule.logs.unshift("["+date.slice(0,10)+" "+date.slice(11,19)+"] failed query with following body: "+req.body);
+	var date=convertUTCDateToLocalDate(new Date()).toJSON();
+	console.log("["+date.slice(0,10)+" "+date.slice(11,19)+"] failed query with following body: "+req.body)
 	res.setHeader('Content-Type', 'application/json');
 	res.send(JSON.stringify({result: false}));
   }
