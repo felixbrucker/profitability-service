@@ -107,7 +107,7 @@ function getProfitability(pool) {
 				break;
 			case "zpool":
 				Object.keys(parsed).forEach(function (key) {
-					setRealProfitability(parsed[key].name,parsed[key].estimate_current,pool,parsed[key].port);
+					setRealProfitability(parsed[key].name,parseFloat(parsed[key].estimate_current),pool,parsed[key].port);
 				});
 				break;
 		}
@@ -129,31 +129,50 @@ function setRealProfitability(key,profitability,pool,port){
 		if (configModule.pools[pool].algos[key].alt!==undefined)
 			newKey=configModule.pools[pool].algos[key].alt;
 		var newProfitability=0;
-		switch(configModule.pools[pool].algos[key].conversionFactor){
-			case 0: newProfitability=profitability;
-			  break;
-			case 1: newProfitability=profitability/1000;
-			  break;
-			case 2: newProfitability=profitability/1000000;
-			  break;
-			case 3: newProfitability=profitability/1000000000;
-			  break;
-			case 4: newProfitability=profitability/1000000000000;
-			  break;
-			case 5: newProfitability=profitability/1000000000000000;
-			  break;
+		var ignore=false;
+		if (pool==="zpool"){
+			if (configModule.pools[pool].algos[key].estimate_prev.length===configModule.config.prevAmountZpool)
+				configModule.pools[pool].algos[key].estimate_prev.pop();
+			configModule.pools[pool].algos[key].estimate_prev.unshift(profitability);
+			
+			for (var i=0;i< configModule.pools[pool].algos[key].estimate_prev.length-1;i++){
+				if (configModule.pools[pool].algos[key].estimate_prev[i] - configModule.pools[pool].algos[key].estimate_prev[i+1] > configModule.config.thresholdZpool){
+					ignore=true;
+					break;
+				}else{
+					ignore=false;
+				}
+			}
+			
 		}
-		if (configModule.algos[newKey].pool === pool){
-			configModule.algos[newKey].profitability=newProfitability;
-			configModule.algos[newKey].pool=pool;
-			configModule.algos[newKey].port=port;
-		}else{
-			if (configModule.algos[newKey].profitability<newProfitability){
+		if (!ignore){
+			switch(configModule.pools[pool].algos[key].conversionFactor){
+				case 0: newProfitability=profitability;
+				  break;
+				case 1: newProfitability=profitability/1000;
+				  break;
+				case 2: newProfitability=profitability/1000000;
+				  break;
+				case 3: newProfitability=profitability/1000000000;
+				  break;
+				case 4: newProfitability=profitability/1000000000000;
+				  break;
+				case 5: newProfitability=profitability/1000000000000000;
+				  break;
+			}
+			if (configModule.algos[newKey].pool === pool){
 				configModule.algos[newKey].profitability=newProfitability;
 				configModule.algos[newKey].pool=pool;
 				configModule.algos[newKey].port=port;
+			}else{
+				if (configModule.algos[newKey].profitability<newProfitability){
+					configModule.algos[newKey].profitability=newProfitability;
+					configModule.algos[newKey].pool=pool;
+					configModule.algos[newKey].port=port;
+				}
 			}
 		}
+		
 		
 	}
 }

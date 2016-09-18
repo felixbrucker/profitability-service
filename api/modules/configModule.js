@@ -13,7 +13,9 @@ var config = module.exports = {
 	enabled: {
 		nicehash: true,
 		zpool: true
-	}
+	},
+	tresholdZpool: 0.00003,
+	prevAmountZpool: 3
   },
   pools:{
 	  nicehash:{
@@ -50,31 +52,31 @@ var config = module.exports = {
 		  baseUrl: "stratum+tcp://#ALGO#.mine.zpool.ca:#PORT#",
 		  regions: null,
 		  algos: {
-			argon2:{conversionFactor:2},
-			blake2s:{conversionFactor:3},
-			blakecoin:{conversionFactor:3, alt:"blake256r8"},
-			c11:{conversionFactor:2},
-			decred:{conversionFactor:3},
-			lbry:{conversionFactor:2},
-			lyra2v2:{conversionFactor:2, alt:"lyra2rev2"},
-			m7m:{conversionFactor:2},
-			"myr-gr":{conversionFactor:2},
-			neoscrypt:{conversionFactor:2},
-			nist5:{conversionFactor:2},
-			qubit:{conversionFactor:2},
-			quark:{conversionFactor:2},
-			scrypt:{conversionFactor:2},
-			sha256:{conversionFactor:3},
-			sib:{conversionFactor:2},
-			skein:{conversionFactor:2},
-			veltor:{conversionFactor:2},
-			x11:{conversionFactor:2},
-			x11evo:{conversionFactor:2},
-			x13:{conversionFactor:2},
-			x14:{conversionFactor:2},
-			x15:{conversionFactor:2},
-			x17:{conversionFactor:2},
-			yescrypt:{conversionFactor:2}
+			argon2:{conversionFactor:2,estimate_prev:[]},
+			blake2s:{conversionFactor:3,estimate_prev:[]},
+			blakecoin:{conversionFactor:3, alt:"blake256r8",estimate_prev:[]},
+			c11:{conversionFactor:2,estimate_prev:[]},
+			decred:{conversionFactor:3,estimate_prev:[]},
+			lbry:{conversionFactor:2,estimate_prev:[]},
+			lyra2v2:{conversionFactor:2, alt:"lyra2rev2",estimate_prev:[]},
+			m7m:{conversionFactor:2,estimate_prev:[]},
+			"myr-gr":{conversionFactor:2,estimate_prev:[]},
+			neoscrypt:{conversionFactor:2,estimate_prev:[]},
+			nist5:{conversionFactor:2,estimate_prev:[]},
+			qubit:{conversionFactor:2,estimate_prev:[]},
+			quark:{conversionFactor:2,estimate_prev:[]},
+			scrypt:{conversionFactor:2,estimate_prev:[]},
+			sha256:{conversionFactor:3,estimate_prev:[]},
+			sib:{conversionFactor:2,estimate_prev:[]},
+			skein:{conversionFactor:2,estimate_prev:[]},
+			veltor:{conversionFactor:2,estimate_prev:[]},
+			x11:{conversionFactor:2,estimate_prev:[]},
+			x11evo:{conversionFactor:2,estimate_prev:[]},
+			x13:{conversionFactor:2,estimate_prev:[]},
+			x14:{conversionFactor:2,estimate_prev:[]},
+			x15:{conversionFactor:2,estimate_prev:[]},
+			x17:{conversionFactor:2,estimate_prev:[]},
+			yescrypt:{conversionFactor:2,estimate_prev:[]}
 		}
 	  }
   },
