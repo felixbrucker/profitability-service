@@ -107,7 +107,7 @@ function getProfitability(pool) {
 				break;
 			case "zpool":
 				Object.keys(parsed).forEach(function (key) {
-					setRealProfitability(parsed[key].name,parseFloat(parsed[key].estimate_current),pool,parsed[key].port);
+					setRealProfitability(parsed[key].name,parseFloat(parsed[key].estimate_current)*0.5,pool,parsed[key].port);
 				});
 				break;
 		}

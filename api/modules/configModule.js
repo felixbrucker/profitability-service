@@ -12,7 +12,7 @@ var config = module.exports = {
   config: {
 	enabled: {
 		nicehash: true,
-		zpool: true
+		zpool: false
 	},
 	tresholdZpool: 0.00003,
 	prevAmountZpool: 3
