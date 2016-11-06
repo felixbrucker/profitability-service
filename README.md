@@ -126,6 +126,7 @@ in case something is wrong/missing in the query:
 * hodl
 * daggerhashimoto
 * cryptonight
+* equihash
 
 
 ### Todos
