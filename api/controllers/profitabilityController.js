@@ -182,15 +182,11 @@ function setRealProfitability(key,profitability,pool,port){
 function init() {
 	if (configModule.config.enabled.nicehash)
 		getProfitability("nicehash");
-	if (configModule.config.enabled.zpool)
-		getProfitability("zpool");
-	
+
 	var minutes = 2, profitabilityInterval = minutes * 60 * 1000;
 	setInterval(function () {
 		if (configModule.config.enabled.nicehash)
 			getProfitability("nicehash");
-		if (configModule.config.enabled.zpool)
-			getProfitability("zpool");
 	}, profitabilityInterval);
 }
 
