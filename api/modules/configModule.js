@@ -11,8 +11,7 @@ if (!fs.existsSync("data")){
 var config = module.exports = {
   config: {
 	enabled: {
-		nicehash: true,
-		zpool: false
+		nicehash: true
 	},
 	tresholdZpool: 0.00003,
 	prevAmountZpool: 3
@@ -47,37 +46,6 @@ var config = module.exports = {
 			cryptonight:{conversionFactor:3},
 			lbry:{conversionFactor:3},
 			equihash:{conversionFactor:3}
-		}
-	  },
-	  zpool:{
-		  baseUrl: "stratum+tcp://#ALGO#.mine.zpool.ca:#PORT#",
-		  regions: null,
-		  algos: {
-			argon2:{conversionFactor:2,estimate_prev:[]},
-			blake2s:{conversionFactor:3,estimate_prev:[]},
-			blakecoin:{conversionFactor:3, alt:"blake256r8",estimate_prev:[]},
-			c11:{conversionFactor:2,estimate_prev:[]},
-			decred:{conversionFactor:3,estimate_prev:[]},
-			lbry:{conversionFactor:2,estimate_prev:[]},
-			lyra2v2:{conversionFactor:2, alt:"lyra2rev2",estimate_prev:[]},
-			m7m:{conversionFactor:2,estimate_prev:[]},
-			"myr-gr":{conversionFactor:2,estimate_prev:[]},
-			neoscrypt:{conversionFactor:2,estimate_prev:[]},
-			nist5:{conversionFactor:2,estimate_prev:[]},
-			qubit:{conversionFactor:2,estimate_prev:[]},
-			quark:{conversionFactor:2,estimate_prev:[]},
-			scrypt:{conversionFactor:2,estimate_prev:[]},
-			sha256:{conversionFactor:3,estimate_prev:[]},
-			sib:{conversionFactor:2,estimate_prev:[]},
-			skein:{conversionFactor:2,estimate_prev:[]},
-			veltor:{conversionFactor:2,estimate_prev:[]},
-			x11:{conversionFactor:2,estimate_prev:[]},
-			x11evo:{conversionFactor:2,estimate_prev:[]},
-			x13:{conversionFactor:2,estimate_prev:[]},
-			x14:{conversionFactor:2,estimate_prev:[]},
-			x15:{conversionFactor:2,estimate_prev:[]},
-			x17:{conversionFactor:2,estimate_prev:[]},
-			yescrypt:{conversionFactor:2,estimate_prev:[]}
 		}
 	  }
   },
