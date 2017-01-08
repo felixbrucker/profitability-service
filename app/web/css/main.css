@@ -20,16 +20,13 @@ body {
     text-align: center;
 }
 
-.nicehash {
-	color: rgb(217,217,0);
-}
-
-.zpool {
-	color: rgb(0,0,230);
-}
-
 th {
     text-align: center;
+}
+
+.slim tbody tr {
+	padding: 1px 1px 1px 1px;
+	line-height: 10px;
 }
 
 ul {
