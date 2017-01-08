@@ -24,9 +24,9 @@ th {
     text-align: center;
 }
 
-.slim tbody tr {
+.slim tr {
 	padding: 1px 1px 1px 1px;
-	line-height: 10px;
+	line-height: 8px;
 }
 
 ul {
