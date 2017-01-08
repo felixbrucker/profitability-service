@@ -16,7 +16,7 @@ body {
 }
 
 tr {
-	height:14px;
+	line-height: 18px;
 }
 
 th {
