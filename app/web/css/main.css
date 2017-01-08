@@ -15,18 +15,12 @@ body {
     position: relative;
 }
 
-.table-borderless tbody tr td, .table-borderless tbody tr th, .table-borderless thead tr th {
-    border: none;
-    text-align: center;
+.table-condensed tr {
+	height:14px;
 }
 
 th {
     text-align: center;
-}
-
-.slim tr {
-	padding: 1px 1px 1px 1px;
-	line-height: 12px;
 }
 
 ul {
