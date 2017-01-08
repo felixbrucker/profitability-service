@@ -1,4 +1,5 @@
 html {
+    text-align: center;
     position: relative;
     min-height: 100%;
 }
@@ -25,6 +26,10 @@ body {
 
 .zpool {
 	color: rgb(0,0,230);
+}
+
+th {
+    text-align: center;
 }
 
 ul {
