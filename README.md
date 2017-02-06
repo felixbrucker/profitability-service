@@ -135,6 +135,7 @@ in case something is wrong/missing in the query:
 * daggerhashimoto
 * cryptonight
 * equihash
+* pascal
 
 
 ### Todos
