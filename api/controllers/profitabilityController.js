@@ -34,7 +34,7 @@ function query(req, res, next) {
 				}
 			}
 	  });
-	  profitabilityArr.sort(function(a,b) {return (a.profitability > b.profitability) ? 1 : ((b.profitability > a.profitability) ? -1 : 0);} );
+	  profitabilityArr.sort(function(a,b) {return (a.profitability > b.profitability) ? 1 : ((b.profitability > a.profitability) ? -1 : 0);}).reverse();
 	  if (bestAlgo!==""){
 		var result=configModule.pools[configModule.algos[bestAlgo].pool].baseUrl;
 		result = result.replace("#ALGO#", bestAlgo);
