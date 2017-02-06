@@ -72,10 +72,18 @@ name is optional for stats
 ```sh
 {
 	"result": {
-		"url": "stratum+tcp://qubit.mine.zpool.ca:4733",
-		"profitability": 6.403e-11,
-		"pool": "zpool",
-		"algo": "qubit"
+		"url": "stratum+tcp://x11.eu.nicehash.com:3336",
+		"profitability": 1.0317e-11,
+		"pool": "nicehash",
+		"algo": "x11",
+		"profitabilityArr": [
+			{"algo":"x11", "profitability": 0.00154755},
+			{"algo":"quark", "profitability": 0.0012342},
+			{"algo":"x13", "profitability": 0.0011424},
+			{"algo":"qubit", "profitability": 0.0010815},
+			{"algo":"x15", "profitability": 0.000015},
+			{"algo":"x14", "profitability": 0}	
+		]
 	}
 }
 ```
