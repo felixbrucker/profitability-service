@@ -23,8 +23,10 @@ function query(req, res, next) {
 	  var bestAlgo="";
 	  var bestProfitability=0;
 	  //console.log("======= "+req.body.name+" =======");
+	  var profitabilityArr=[];
 	  Object.keys(req.body.algos).forEach(function (key) {
 			if (req.body.algos[key].hashrate !== undefined && key in configModule.algos){
+				profitabilityArr.push({algo:key,profitability:req.body.algos[key].hashrate * configModule.algos[key].profitability});
 				//console.log(key+": "+(req.body.algos[key].hashrate * configModule.algos[key].profitability).toFixed(8));
 				if (req.body.algos[key].hashrate * configModule.algos[key].profitability > bestProfitability){
 					bestProfitability=req.body.algos[key].hashrate * configModule.algos[key].profitability;
@@ -32,6 +34,7 @@ function query(req, res, next) {
 				}
 			}
 	  });
+	  profitabilityArr.sort(function(a,b) {return (a.profitability > b.profitability) ? 1 : ((b.profitability > a.profitability) ? -1 : 0);} );
 	  if (bestAlgo!==""){
 		var result=configModule.pools[configModule.algos[bestAlgo].pool].baseUrl;
 		result = result.replace("#ALGO#", bestAlgo);
@@ -53,7 +56,7 @@ function query(req, res, next) {
 			configModule.logs.unshift(entry);
 		}
 		res.setHeader('Content-Type', 'application/json');
-		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo}}));
+		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo,profitabilityArr:profitabilityArr}}));
 	  }
   }else{
 	var date=convertUTCDateToLocalDate(new Date()).toJSON();
