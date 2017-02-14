@@ -46,7 +46,8 @@ var config = module.exports = {
 			cryptonight:{conversionFactor:3},
 			lbry:{conversionFactor:3},
 			equihash:{conversionFactor:3},
-			pascal:{conversionFactor:3}//untested
+			pascal:{conversionFactor:3}, //untested
+			x11gost:{conversionFactor:3}
 		}
 	  }
   },
@@ -88,7 +89,8 @@ var config = module.exports = {
 	daggerhashimoto:{profitability:0,pool:"", port: null},
 	cryptonight:{profitability:0,pool:"", port: null},
 	equihash:{profitability:0,pool:"", port: null},
-	pascal:{profitability:0,pool:"",port: null}
+	pascal:{profitability:0,pool:"",port: null},
+	x11gost:{profitability:0,pool:"",port: null}
   },
   logs: [],
   getConfig: function () {
