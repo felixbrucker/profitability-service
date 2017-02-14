@@ -25,14 +25,17 @@ function query(req, res, next) {
 	  //console.log("======= "+req.body.name+" =======");
 	  var profitabilityArr=[];
 	  Object.keys(req.body.algos).forEach(function (key) {
-			if (req.body.algos[key].hashrate !== undefined && key in configModule.algos){
-				profitabilityArr.push({algo:key,profitability:req.body.algos[key].hashrate * configModule.algos[key].profitability});
-				//console.log(key+": "+(req.body.algos[key].hashrate * configModule.algos[key].profitability).toFixed(8));
-				if (req.body.algos[key].hashrate * configModule.algos[key].profitability > bestProfitability){
-					bestProfitability=req.body.algos[key].hashrate * configModule.algos[key].profitability;
-					bestAlgo=key;
-				}
+		var algo=key;
+		if(key==="sib")
+			algo="x11gost";
+		if (req.body.algos[key].hashrate !== undefined && algo in configModule.algos){
+			profitabilityArr.push({algo:key,profitability:req.body.algos[key].hashrate * configModule.algos[algo].profitability});
+			//console.log(key+": "+(req.body.algos[key].hashrate * configModule.algos[key].profitability).toFixed(8));
+			if (req.body.algos[key].hashrate * configModule.algos[algo].profitability > bestProfitability){
+				bestProfitability=req.body.algos[key].hashrate * configModule.algos[algo].profitability;
+				bestAlgo=algo;
 			}
+		}
 	  });
 	  profitabilityArr.sort(function(a,b) {return (a.profitability > b.profitability) ? 1 : ((b.profitability > a.profitability) ? -1 : 0);}).reverse();
 	  if (bestAlgo!==""){
@@ -55,6 +58,8 @@ function query(req, res, next) {
 			};
 			configModule.logs.unshift(entry);
 		}
+		if(bestAlgo==="x11gost")
+			bestAlgo="sib";
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify({result: {url:result,profitability:configModule.algos[bestAlgo].profitability,pool:configModule.algos[bestAlgo].pool,algo:bestAlgo,profitabilityArr:profitabilityArr}}));
 	  }
