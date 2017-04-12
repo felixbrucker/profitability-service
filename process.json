@@ -1,9 +1,7 @@
 {
-  apps : {
-    name : "profitability-service",
-    script : "main.js",
-    watch : true,
-    "ignore_watch" : ["node_modules", "app","data",".git"]
-  }
+  "name" : "profitability-service",
+  "script" : "main.js",
+  "watch" : true,
+  "ignore_watch" : ["node_modules", "app","data",".git"]
 }
 
