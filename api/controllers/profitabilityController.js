@@ -78,7 +78,7 @@ function getProfitability(pool) {
 	var path= "";
 	switch(pool){
 		case "nicehash":
-			host="www.nicehash.com";
+			host="api.nicehash.com";
 			path="/api?method=simplemultialgo.info";
 			break;
 		case "zpool":
