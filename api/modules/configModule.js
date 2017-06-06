@@ -19,7 +19,7 @@ var config = module.exports = {
   pools:{
 	  nicehash:{
 		  baseUrl: "stratum+tcp://#ALGO#.#REGION#.nicehash.com:#PORT#",
-		  regions: ["eu","usa","hk","jp"],
+		  regions: ["eu","usa","hk","jp", 'in', 'br'],
 		  algos: {
 				scrypt:{conversionFactor:3},
 				sha256:{conversionFactor:3},
