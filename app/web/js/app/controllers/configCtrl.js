@@ -19,10 +19,10 @@
 
         var vm = this;
         vm.config = null;
-		vm.algos = null;
+		    vm.algos = null;
         vm.updating=null;
-		vm.waiting = null;
-		vm.algoInterval = null;
+		    vm.waiting = null;
+		    vm.algoInterval = null;
         
 
         // controller API
@@ -30,8 +30,9 @@
         vm.getConfig=getConfig;
         vm.setConfig=setConfig;
         vm.update=update;
-		vm.testQuery=testQuery;
-		vm.getAlgos=getAlgos;
+        vm.testQuery=testQuery;
+        vm.getAlgos=getAlgos;
+        vm.getFormattedProfitability = getFormattedProfitability;
 
 
 
@@ -141,6 +142,26 @@
             }, function errorCallback(response) {
                 console.log(response);
             });
+        }
+
+        function getFormattedProfitability(profitability) {
+            const units = [
+              '',
+              'K',
+              'M',
+              'G',
+              'T',
+              'P',
+              'E',
+              'Z',
+              'Y',
+            ];
+            let counter = 0;
+            while (profitability < 0.00001) {
+                counter++;
+                profitability = profitability * 1000;
+            }
+            return `${profitability.toFixed(8)} BTC/${units[counter]}H/Day`;
         }
 
 

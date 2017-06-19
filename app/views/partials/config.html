@@ -53,7 +53,7 @@
 		<tbody>
 			<tr ng-repeat="(key, data) in configVm.algos track by $index">
 				<td>{{key}}</td>
-				<td><span data-highlighter="data.profitability">{{(data.profitability*1000000).toFixed(8)}}</span> BTC/MH/Day</td>
+				<td><span data-highlighter="data.profitability">{{configVm.getFormattedProfitability(data.profitability)}}</span></td>
 				<td><span data-highlighter="data.pool">{{data.pool}}</span></td>
 			</tr>
 		</tbody>
