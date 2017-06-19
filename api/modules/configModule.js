@@ -39,7 +39,8 @@ var config = module.exports = {
 				equihash:{conversionFactor:3},
 				pascal:{conversionFactor:3}, //untested
 				x11gost:{conversionFactor:3},
-				sia:{conversionFactor:3}
+				sia:{conversionFactor:3},
+				blake2s: {conversionFactor: 3}
 			}
 	  }
   },
@@ -62,7 +63,8 @@ var config = module.exports = {
 		equihash:{profitability:0,pool:"", port: null},
 		pascal:{profitability:0,pool:"",port: null},
 		x11gost:{profitability:0,pool:"",port: null},
-		sia:{profitability:0, pool: "", port: null}
+		sia:{profitability:0, pool: "", port: null},
+    blake2s: {profitability:0, pool: "", port: null}
   },
   logs: [],
   getConfig: function () {
