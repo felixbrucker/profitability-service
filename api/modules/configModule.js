@@ -37,10 +37,11 @@ var config = module.exports = {
 				cryptonight:{conversionFactor:3},
 				lbry:{conversionFactor:3},
 				equihash:{conversionFactor:3},
-				pascal:{conversionFactor:3}, //untested
+				pascal:{conversionFactor:3},
 				x11gost:{conversionFactor:3},
 				sia:{conversionFactor:3},
-				blake2s: {conversionFactor: 3}
+				blake2s: {conversionFactor: 3},
+        skunk: {conversionFactor: 3},
 			}
 	  }
   },
@@ -64,7 +65,8 @@ var config = module.exports = {
 		pascal:{profitability:0,pool:"",port: null},
 		x11gost:{profitability:0,pool:"",port: null},
 		sia:{profitability:0, pool: "", port: null},
-    blake2s: {profitability:0, pool: "", port: null}
+    blake2s: {profitability:0, pool: "", port: null},
+    skunk: {profitability:0, pool: "", port: null},
   },
   logs: [],
   getConfig: function () {
