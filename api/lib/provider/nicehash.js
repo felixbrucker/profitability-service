@@ -19,13 +19,14 @@ module.exports = class Nicehash extends BaseProvider {
     const relevantProfitabilityData = this.profitabilityData.filter(obj => Nicehash.algorithmInArray(obj.algorithm, algorithms));
     const result = relevantProfitabilityData
       .map((obj) => {
+        const normalizedAlgorithmName = Nicehash.normalizeAlgorithmName(obj.algorithm);
         let useSSL = obj.supportsSSL;
         if (obj.supportsSSL) {
-          useSSL = query.algos[obj.algorithm].supportsSSL;
+          useSSL = query.algos[normalizedAlgorithmName].supportsSSL;
         }
         return {
-          algorithm: obj.algorithm,
-          profitability: obj.profitability * query.algos[obj.algorithm].hashrate,
+          algorithm: normalizedAlgorithmName,
+          profitability: obj.profitability * query.algos[normalizedAlgorithmName].hashrate,
           stratum: `stratum+${useSSL ? 'ssl' : 'tcp'}://${obj.algorithm}.${query.region}.nicehash.com:${useSSL ? obj.sslPort : obj.port}`,
           isSSL: useSSL,
         };

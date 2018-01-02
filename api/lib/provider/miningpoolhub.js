@@ -33,14 +33,15 @@ module.exports = class Miningpoolhub extends BaseProvider {
     const relevantProfitabilityData = this.profitabilityData.filter(obj => Miningpoolhub.algorithmInArray(Miningpoolhub.normalizeAlgorithmName(obj.algorithm), algorithms));
     const result = relevantProfitabilityData
       .map((obj) => {
+        const normalizedAlgorithmName = Miningpoolhub.normalizeAlgorithmName(obj.algorithm);
         let useSSL = obj.supportsSSL;
         if (obj.supportsSSL) {
-          useSSL = query.algos[obj.algorithm].supportsSSL;
+          useSSL = query.algos[normalizedAlgorithmName].supportsSSL;
         }
         const domain = obj.useDefaultDomain ? 'hub.miningpoolhub.com' : `${Miningpoolhub.normalizeRegion(query.region)}.${obj.algorithm}-hub.miningpoolhub.com`;
         return {
-          algorithm: Miningpoolhub.normalizeAlgorithmName(obj.algorithm),
-          profitability: obj.profitability * query.algos[obj.algorithm].hashrate,
+          algorithm: normalizedAlgorithmName,
+          profitability: obj.profitability * query.algos[normalizedAlgorithmName].hashrate,
           stratum: `stratum+${useSSL ? 'ssl' : 'tcp'}://${domain}:${obj.port}`,
           isSSL: useSSL,
         };
