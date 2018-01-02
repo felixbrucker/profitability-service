@@ -1,72 +1,41 @@
-'use strict';
+const colors = require('colors/safe');
+const fs = require('fs');
 
-var colors = require('colors/safe');
-var fs = require('fs');
+const configPath = 'data/settings.json';
 
-var configPath="data/settings.json";
-
-if (!fs.existsSync("data")){
-  fs.mkdirSync("data");
+if (!fs.existsSync('data')) {
+  fs.mkdirSync('data');
 }
-var config = module.exports = {
-  config: {
-	enabled: {
-		nicehash: true
-	},
-	tresholdZpool: 0.00003,
-	prevAmountZpool: 3
-  },
-  pools:{
-	  nicehash:{
-		  baseUrl: "stratum+tcp://#ALGO#.#REGION#.nicehash.com:#PORT#",
-		  regions: ["eu","usa","hk","jp", 'in', 'br'],
-		  algos: {
-				scrypt:{conversionFactor:3},
-				sha256:{conversionFactor:3},
-				x11:{conversionFactor:3},
-				x13:{conversionFactor:3},
-				x15:{conversionFactor:3},
-				nist5:{conversionFactor:3},
-				neoscrypt:{conversionFactor:3},
-				lyra2re:{conversionFactor:3},
-				qubit:{conversionFactor:3},
-				quark:{conversionFactor:3},
-				lyra2rev2:{conversionFactor:3},
-				daggerhashimoto:{conversionFactor:3},
-				decred:{conversionFactor:3},
-				cryptonight:{conversionFactor:3},
-				lbry:{conversionFactor:3},
-				equihash:{conversionFactor:3},
-				pascal:{conversionFactor:3},
-				x11gost:{conversionFactor:3},
-				sia:{conversionFactor:3},
-				blake2s: {conversionFactor: 3},
-        skunk: {conversionFactor: 3},
-			}
-	  }
-  },
+const config = module.exports = {
+  config: {},
   algos: {
-		decred:{profitability:0,pool:"", port: null},
-		lbry:{profitability:0,pool:"", port: null},
-		lyra2rev2:{profitability:0,pool:"", port: null},
-		neoscrypt:{profitability:0,pool:"", port: null},
-		nist5:{profitability:0,pool:"", port: null},
-		qubit:{profitability:0,pool:"", port: null},
-		quark:{profitability:0,pool:"", port: null},
-		scrypt:{profitability:0,pool:"", port: null},
-		sha256:{profitability:0,pool:"", port: null},
-		x11:{profitability:0,pool:"", port: null},
-		x13:{profitability:0,pool:"", port: null},
-		x15:{profitability:0,pool:"", port: null},
-		lyra2re:{profitability:0,pool:"", port: null},
-		daggerhashimoto:{profitability:0,pool:"", port: null},
-		cryptonight:{profitability:0,pool:"", port: null},
-		equihash:{profitability:0,pool:"", port: null},
-		pascal:{profitability:0,pool:"",port: null},
-		x11gost:{profitability:0,pool:"",port: null},
-		sia:{profitability:0, pool: "", port: null},
-    blake2s: {profitability:0, pool: "", port: null},
-    skunk: {profitability:0, pool: "", port: null},
+    'myriad-groestl': {profitability: 0, pool: ''},
+    blake2s: {profitability: 0, pool: ''},
+    cryptonight: {profitability: 0, pool: ''},
+    daggerhashimoto: {profitability: 0, pool: ''},
+    decred: {profitability: 0, pool: ''},
+    equihash: {profitability: 0, pool: ''},
+    groestl: {profitability: 0, pool: ''},
+    keccak: {profitability: 0, pool: ''},
+    lbry: {profitability: 0, pool: ''},
+    lyra2re: {profitability: 0, pool: ''},
+    lyra2rev2: {profitability: 0, pool: ''},
+    lyra2z: {profitability: 0, pool: ''},
+    neoscrypt: {profitability: 0, pool: ''},
+    nist5: {profitability: 0, pool: ''},
+    pascal: {profitability: 0, pool: ''},
+    quark: {profitability: 0, pool: ''},
+    qubit: {profitability: 0, pool: ''},
+    scrypt: {profitability: 0, pool: ''},
+    sha256: {profitability: 0, pool: ''},
+    sia: {profitability: 0, pool: ''},
+    skein: {profitability: 0, pool: ''},
+    skunk: {profitability: 0, pool: ''},
+    x11: {profitability: 0, pool: ''},
+    x11gost: {profitability: 0, pool: ''},
+    x13: {profitability: 0, pool: ''},
+    x15: {profitability: 0, pool: ''},
+    yescrypt: {profitability: 0, pool: ''},
   },
   logs: [],
   getConfig: function () {
@@ -76,7 +45,7 @@ var config = module.exports = {
     config.config = newConfig;
   },
   saveConfig: function () {
-    console.log(colors.grey("writing config to file.."));
+    console.log(colors.grey('writing config to file..'));
     fs.writeFile(configPath, JSON.stringify(config.config), function (err) {
       if (err) {
         return console.log(err);
@@ -84,18 +53,18 @@ var config = module.exports = {
     });
   },
   loadConfig: function () {
-    fs.stat(configPath, function (err, stat) {
-      if (err == null) {
+    fs.stat(configPath, function (err) {
+      if (err === null) {
         fs.readFile(configPath, 'utf8', function (err, data) {
           if (err) throw err;
           config.config = JSON.parse(data);
         });
-      } else if (err.code == 'ENOENT') {
+      } else if (err.code === 'ENOENT') {
         //default conf
         config.saveConfig();
       }
     });
   }
 };
-console.log("initializing, please wait...");
+console.log('initializing, please wait...');
 config.loadConfig();

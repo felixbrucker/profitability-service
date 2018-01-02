@@ -9,16 +9,16 @@
 		</thead>
 		<tbody>
 			<tr>
-				<td><input type="checkbox" ng-model="configVm.config.enabled.nicehash" ng-click="configVm.setConfig()"></td>
+				<td><input type="checkbox" checked disabled></td>
 				<td>nicehash<td>
 			</tr>
-			<!--<tr ng-repeat="(key, data) in configVm.config.enabled track by $index">
-				<td><input type="checkbox" ng-model="data" ng-click="configVm.setConfig()"></td>
-				<td>{{key}} - {{data}}</td>
-			</tr>-->
+			<tr>
+				<td><input type="checkbox" checked disabled></td>
+				<td>miningpoolhub<td>
+			</tr>
 		</tbody>
 	</table>
-    
+
     <div class="col-md-12" style="margin-bottom: 10px;">
       <button type="button" class="btn btn-success" ng-disabled="config.$invalid" ng-click="configVm.setConfig()">Save
       </button>

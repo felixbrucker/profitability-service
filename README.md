@@ -33,14 +33,6 @@ pm2 save
 pm2 startup
 ```
 
-note: windows users need the following instead:
-
-```sh
-npm install pm2-windows-startup -g
-pm2-startup install
-pm2 save
-```
-
 ### Update software
 
 run ``` git pull ```
@@ -51,40 +43,58 @@ run ``` git pull ```
 ```sh
 {
 	"algos": {
-		"x11": {"hashrate":150000000},
-		"x13": {"hashrate":150000000},
-		"x14": {"hashrate":150000000},
-		"x15": {"hashrate":150000000},
-		"quark": {"hashrate":150000000},
-		"qubit": {"hashrate":150000000}
+		"x11": {"hashrate":150000000, "supportsSSL": false},
+		"x13": {"hashrate":150000000, "supportsSSL": false},
+		"x14": {"hashrate":150000000, "supportsSSL": false},
+		"x15": {"hashrate":150000000, "supportsSSL": false},
+		"quark": {"hashrate":150000000, "supportsSSL": false},
+		"qubit": {"hashrate":150000000, "supportsSSL": false}
 	},
 	"region": "eu",
-	"name": "Baikal Mini Miner"
+	"name": "Baikal Mini Miner",
+	"provider": "nicehash"
 }
 ```
 
-Hashrate is in Hash/sec, region can be one of these: ["eu","usa","hk","jp"]
-
-name is optional for stats
+Hashrate is in Hash/sec, region can be one of these: ["eu","usa","hk","jp", "in", "br"]
+Provider can be either "nicehash" or "miningpoolhub"
 
 ### JSON template for responses from the server
 
 ```sh
 {
-	"result": {
-		"url": "stratum+tcp://x11.eu.nicehash.com:3336",
-		"profitability": 1.0317e-11,
-		"pool": "nicehash",
-		"algo": "x11",
-		"profitabilityArr": [
-			{"algo":"x11", "profitability": 0.00154755},
-			{"algo":"quark", "profitability": 0.0012342},
-			{"algo":"x13", "profitability": 0.0011424},
-			{"algo":"qubit", "profitability": 0.0010815},
-			{"algo":"x15", "profitability": 0.000015},
-			{"algo":"x14", "profitability": 0}	
-		]
-	}
+   "result":[
+      {
+         "algorithm":"x15",
+         "profitability":0.000135816,
+         "stratum":"stratum+tcp://x15.eu.nicehash.com:3339",
+         "isSSL":false
+      },
+      {
+         "algorithm":"x13",
+         "profitability":0.00010698899999999999,
+         "stratum":"stratum+tcp://x13.eu.nicehash.com:3337",
+         "isSSL":false
+      },
+      {
+         "algorithm":"quark",
+         "profitability":0.00007946249999999999,
+         "stratum":"stratum+tcp://quark.eu.nicehash.com:3345",
+         "isSSL":false
+      },
+      {
+         "algorithm":"qubit",
+         "profitability":0.000067578,
+         "stratum":"stratum+tcp://qubit.eu.nicehash.com:3344",
+         "isSSL":false
+      },
+      {
+         "algorithm":"x11",
+         "profitability":0.000006879,
+         "stratum":"stratum+tcp://x11.eu.nicehash.com:3336",
+         "isSSL":false
+      }
+   ]
 }
 ```
 
@@ -98,51 +108,37 @@ in case something is wrong/missing in the query:
 
 ### complete list of supported algos
 
-* argon2
+* myriad-groestl
 * blake2s
-* blake256r8
-* c11
+* cryptonight
+* daggerhashimoto
 * decred
+* equihash
+* groestl
+* keccak
 * lbry
+* lyra2re
 * lyra2rev2
-* m7m
-* myr-gr
+* lyra2z
 * neoscrypt
 * nist5
-* qubit
+* pascal
 * quark
+* qubit
 * scrypt
 * sha256
-* sib
+* sia
 * skein
-* veltor
+* skunk
 * x11
-* x11evo
+* x11gost
 * x13
-* x14
 * x15
-* x17
 * yescrypt
-* scryptnf
-* keccak
-* lyra2re
-* whirlpoolx
-* axiom
-* scryptjanenf16
-* blake256r14
-* blake256r8vnl
-* hodl
-* daggerhashimoto
-* cryptonight
-* equihash
-* pascal
 
 
 ### Todos
 
- - Error handling
- - Properly use async Methods
- - Properly send responses to indicate the result to frontend
  - Add Code Comments
  - Write Tests
 
