@@ -68,7 +68,7 @@ function query(req, res, next) {
     date: moment().format('YYYY-MM-DD HH:mm:ss'),
     name: query.name,
     algo: data[0].algorithm,
-    pool: query.provider,
+    pool: query.provider + data[0].symbol ? `-${data[0].symbol}` : '',
     profitability: data[0].profitability.toFixed(8)
   };
   if (configModule.logs.length===320) {
