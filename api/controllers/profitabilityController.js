@@ -3,6 +3,7 @@ const configModule = require(__basedir + 'api/modules/configModule');
 
 const Nicehash = require('../lib/provider/nicehash');
 const Miningpoolhub = require('../lib/provider/miningpoolhub');
+const Minecryptonight = require('../lib/provider/minecryptonight');
 
 const nicehash = new Nicehash({
 	interval: 2 * 60 * 1000,
@@ -10,9 +11,13 @@ const nicehash = new Nicehash({
 const miningpoolhub = new Miningpoolhub({
   interval: 2 * 60 * 1000,
 });
+const minecryptonight = new Minecryptonight({
+  interval: 10 * 60 * 1000,
+});
 
 global.nicehash = nicehash;
 global.miningpoolhub = miningpoolhub;
+global.minecryptonight = minecryptonight;
 
 function isValidQuery(query) {
 	if (!query.algos) {
@@ -50,6 +55,9 @@ function query(req, res, next) {
 		case 'miningpoolhub':
       data = miningpoolhub.getMostProfitableStratumsForQuery(query);
 			break;
+		case 'minecryptonight':
+      data = minecryptonight.getMostProfitableStratumsForQuery(query);
+      break;
 	}
 	if (data.length === 0) {
 		console.error(`[Query] :: nothing returned for query: \n${JSON.stringify(query, null, 2)}`);

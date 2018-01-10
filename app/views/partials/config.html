@@ -5,16 +5,49 @@
 			<tr>
 				<th>Enabled</th>
 				<th>Pool</th>
+				<th>Config</th>
 			</tr>
 		</thead>
 		<tbody>
 			<tr>
 				<td><input type="checkbox" checked disabled></td>
 				<td>nicehash<td>
+				<td>-</td>
 			</tr>
 			<tr>
 				<td><input type="checkbox" checked disabled></td>
 				<td>miningpoolhub<td>
+				<td>-</td>
+			</tr>
+			<tr>
+				<td><input type="checkbox" checked disabled></td>
+				<td>minecryptonight<td>
+				<td>
+					<table class='table table-borderless'>
+						<thead>
+							<tr>
+								<th>Name</th>
+								<th>Supports SSL</th>
+								<th>URL/Domain</th>
+								<th>Port</th>
+								<th>SSL Port</th>
+								<th>user</th>
+								<th>pass</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr ng-repeat="(key, data) in configVm.config.cryptonightPools track by $index">
+								<td>{{key}}</td>
+								<td><input type="checkbox" ng-model="data.supportsSSL"></td>
+								<td><input type="text" ng-model="data.url" placeholder="somedomain.com" size="42"></td>
+								<td><input type="number" ng-model="data.port"></td>
+								<td><input type="number" ng-model="data.sslPort"></td>
+								<td><input type="text" ng-model="data.user"></td>
+								<td><input type="text" ng-model="data.pass"></td>
+							</tr>
+						</tbody>
+					</table>
+				</td>
 			</tr>
 		</tbody>
 	</table>

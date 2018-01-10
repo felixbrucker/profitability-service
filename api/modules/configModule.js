@@ -7,7 +7,31 @@ if (!fs.existsSync('data')) {
   fs.mkdirSync('data');
 }
 const config = module.exports = {
-  config: {},
+  config: {
+    cryptonightPools: {
+      'ITNS': {supportsSSL: true, url: 'pool.intensecoin.net', port: 7777, sslPort: 8446, user: '', pass: ''},
+      'XLC': {supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+      'ETN': {
+        supportsSSL: true,
+        url: '#REGION#.cryptonight-hub.miningpoolhub.com',
+        port: 20596,
+        sslPort: 20596,
+        user: '',
+        pass: '',
+      },
+      'SUMO': {supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
+      'KRB': {supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
+      'XMR': {
+        supportsSSL: true,
+        url: '#REGION#.cryptonight-hub.miningpoolhub.com',
+        port: 20580,
+        sslPort: 20580,
+        user: '',
+        pass: '',
+      },
+      'BCN': {supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
+    }
+  },
   algos: {
     'myriad-groestl': {profitability: 0, pool: ''},
     blake2s: {profitability: 0, pool: ''},
@@ -46,7 +70,7 @@ const config = module.exports = {
   },
   saveConfig: function () {
     console.log(colors.grey('writing config to file..'));
-    fs.writeFile(configPath, JSON.stringify(config.config), function (err) {
+    fs.writeFile(configPath, JSON.stringify(config.config, null, 2), function (err) {
       if (err) {
         return console.log(err);
       }
@@ -58,6 +82,31 @@ const config = module.exports = {
         fs.readFile(configPath, 'utf8', function (err, data) {
           if (err) throw err;
           config.config = JSON.parse(data);
+          if (!config.config.cryptonightPools) {
+            config.config.cryptonightPools = {
+              'ITNS': {supportsSSL: true, url: 'pool.intensecoin.net', port: 7777, sslPort: 8446, user: '', pass: ''},
+              'XLC': {supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+              'ETN': {
+                supportsSSL: true,
+                url: '#REGION#.cryptonight-hub.miningpoolhub.com',
+                port: 20596,
+                sslPort: 20596,
+                user: '',
+                pass: '',
+              },
+              'SUMO': {supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
+              'KRB': {supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
+              'XMR': {
+                supportsSSL: true,
+                url: '#REGION#.cryptonight-hub.miningpoolhub.com',
+                port: 20580,
+                sslPort: 20580,
+                user: '',
+                pass: '',
+              },
+              'BCN': {supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
+            };
+          }
         });
       } else if (err.code === 'ENOENT') {
         //default conf

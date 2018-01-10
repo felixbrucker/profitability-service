@@ -8,27 +8,33 @@ function getConfig(req, res, next) {
 
 function getAlgos(req, res, next) {
   const algorithms = Object.keys(configModule.algos);
-  const nicehashProfitability = algorithms.map(algo => global.nicehash.getProfitabilityForAlgorithm(algo));
-  const miningpoolhubProfitability = algorithms.map(algo => global.miningpoolhub.getProfitabilityForAlgorithm(algo));
+  const providers = [
+    'nicehash',
+    'miningpoolhub',
+    'minecryptonight'
+  ];
+  const profitabilities = providers.map(provider => ({
+    name: provider, profitabilities: algorithms.map(algo => global[provider].getProfitabilityForAlgorithm(algo)),
+  }));
+
   const result = {};
   for (let i = 0; i < algorithms.length; i += 1) {
-    if (!miningpoolhubProfitability[i] && !nicehashProfitability[i]) {
-      // not supported by both
-      result[algorithms[i]] = {profitability: 0, pool: ''};
+    const algo = algorithms[i];
+    const providerWithAlgo = profitabilities.filter((provider => provider.profitabilities[i] !== null));
+    if (providerWithAlgo.length < 1) {
+      result[algo] = {profitability: 0, pool: ''};
+      continue;
     }
-    if (!miningpoolhubProfitability[i]) {
-      // mph doesnt support it
-      result[algorithms[i]] = {profitability: nicehashProfitability[i], pool: 'nicehash'};
-    }
-    if (!nicehashProfitability[i]) {
-      // nicehash doesnt support it
-      result[algorithms[i]] = {profitability: miningpoolhubProfitability[i], pool: 'miningpoolhub'};
-    }
-    if (nicehashProfitability[i] > miningpoolhubProfitability[i]) {
-      result[algorithms[i]] = {profitability: nicehashProfitability[i], pool: 'nicehash'};
-    } else {
-      result[algorithms[i]] = {profitability: miningpoolhubProfitability[i], pool: 'miningpoolhub'};
-    }
+    providerWithAlgo.sort((a, b) => {
+      if (a.profitabilities[i] < b.profitabilities[i]) {
+        return 1;
+      }
+      if (a.profitabilities[i] > b.profitabilities[i]) {
+        return -1;
+      }
+      return 0;
+    });
+    result[algo] = {profitability: providerWithAlgo[0].profitabilities[i], pool: providerWithAlgo[0].name};
   }
   res.send(result);
 }
