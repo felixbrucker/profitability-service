@@ -9,8 +9,8 @@ if (!fs.existsSync('data')) {
 const config = module.exports = {
   config: {
     cryptonightPools: {
-      'ITNS': {supportsSSL: true, url: 'pool.intensecoin.net', port: 7777, sslPort: 8446, user: '', pass: ''},
-      'XLC': {supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+      'ITNS': {enabled: false, supportsSSL: false, url: 'pool.intense.hashvault.pro', port: 5555, user: '', pass: ''},
+      'XLC': {enabled: false, supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
       'ETN': {
         supportsSSL: true,
         url: '#REGION#.cryptonight-hub.miningpoolhub.com',
@@ -19,8 +19,8 @@ const config = module.exports = {
         user: '',
         pass: '',
       },
-      'SUMO': {supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
-      'KRB': {supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
+      'SUMO': {enabled: false, supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
+      'KRB': {enabled: false, supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
       'XMR': {
         supportsSSL: true,
         url: '#REGION#.cryptonight-hub.miningpoolhub.com',
@@ -29,7 +29,7 @@ const config = module.exports = {
         user: '',
         pass: '',
       },
-      'BCN': {supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
+      'BCN': {enabled: false, supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
     }
   },
   algos: {
@@ -84,8 +84,8 @@ const config = module.exports = {
           config.config = JSON.parse(data);
           if (!config.config.cryptonightPools) {
             config.config.cryptonightPools = {
-              'ITNS': {supportsSSL: true, url: 'pool.intensecoin.net', port: 7777, sslPort: 8446, user: '', pass: ''},
-              'XLC': {supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+              'ITNS': {enabled: false, supportsSSL: false, url: 'pool.intense.hashvault.pro', port: 5555, user: '', pass: ''},
+              'XLC': {enabled: false, supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
               'ETN': {
                 supportsSSL: true,
                 url: '#REGION#.cryptonight-hub.miningpoolhub.com',
@@ -94,8 +94,8 @@ const config = module.exports = {
                 user: '',
                 pass: '',
               },
-              'SUMO': {supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
-              'KRB': {supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
+              'SUMO': {enabled: false, supportsSSL: false, url: 'pool.sumokoin.com', port: 4444, user: '', pass: ''},
+              'KRB': {enabled: false, supportsSSL: false, url: 'krb.sberex.com', port: 5555, user: '', pass: ''},
               'XMR': {
                 supportsSSL: true,
                 url: '#REGION#.cryptonight-hub.miningpoolhub.com',
@@ -104,7 +104,7 @@ const config = module.exports = {
                 user: '',
                 pass: '',
               },
-              'BCN': {supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
+              'BCN': {enabled: false, supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
             };
           }
         });

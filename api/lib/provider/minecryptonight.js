@@ -23,6 +23,7 @@ module.exports = class Minecryptonight extends BaseProvider {
       return false;
     }
     const result = this.profitabilityData
+      .filter(obj => config.config.cryptonightPools[obj.symbol].enabled)
       .map((obj) => {
         const algorithm = obj.algorithm;
         const pool = config.config.cryptonightPools[obj.symbol];
