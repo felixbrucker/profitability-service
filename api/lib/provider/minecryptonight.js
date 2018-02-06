@@ -71,7 +71,7 @@ module.exports = class Minecryptonight extends BaseProvider {
     const data = JSON.parse(JSON.stringify(this.profitabilityData));
     // return best profitability
     data.sort((a, b) => b.profitability - a.profitability);
-    return data[0].profitability;
+    return data.length > 0 ? data[0].profitability : 0;
   }
 
   async refreshProfitabilityData() {
