@@ -44,6 +44,7 @@ module.exports = class Miningpoolhub extends BaseProvider {
           profitability: obj.profitability * query.algos[normalizedAlgorithmName].hashrate,
           stratum: `stratum+${useSSL ? 'ssl' : 'tcp'}://${domain}:${obj.port}`,
           isSSL: useSSL,
+          provider: 'miningpoolhub',
         };
       });
     // sort desc

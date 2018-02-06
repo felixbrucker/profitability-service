@@ -29,6 +29,7 @@ module.exports = class Nicehash extends BaseProvider {
           profitability: obj.profitability * query.algos[normalizedAlgorithmName].hashrate,
           stratum: `stratum+${useSSL ? 'ssl' : 'tcp'}://${obj.algorithm}.${query.region}.nicehash.com:${useSSL ? obj.sslPort : obj.port}`,
           isSSL: useSSL,
+          provider: 'nicehash',
         };
       });
     // sort desc

@@ -149,7 +149,7 @@
           },
           region: 'eu',
           name: 'Baikal Mini Miner',
-          provider: 'nicehash',
+          provider: [ 'nicehash', 'minecryptonight', 'miningpoolhub' ],
         },
       }).then(function successCallback(response) {
         console.log(response.data.result);

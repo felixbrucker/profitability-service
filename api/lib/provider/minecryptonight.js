@@ -20,7 +20,7 @@ module.exports = class Minecryptonight extends BaseProvider {
   getMostProfitableStratumsForQuery(query) {
     if (!query.algos.cryptonight) {
       // oh no, cryptonight not enabled
-      return false;
+      return [];
     }
     const result = this.profitabilityData
       .filter(obj => config.config.cryptonightPools[obj.symbol].enabled)
@@ -41,6 +41,7 @@ module.exports = class Minecryptonight extends BaseProvider {
           user: pool.user,
           pass: pool.pass,
           symbol: obj.symbol,
+          provider: 'minecryptonight',
         };
       });
     // sort desc
@@ -69,15 +70,7 @@ module.exports = class Minecryptonight extends BaseProvider {
     }
     const data = JSON.parse(JSON.stringify(this.profitabilityData));
     // return best profitability
-    data.sort((a, b) => {
-      if (a.profitability < b.profitability) {
-        return 1;
-      }
-      if (a.profitability > b.profitability) {
-        return -1;
-      }
-      return 0;
-    });
+    data.sort((a, b) => b.profitability - a.profitability);
     return data[0].profitability;
   }
 

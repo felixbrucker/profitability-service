@@ -47,19 +47,15 @@ function query(req, res, next) {
 		return res.send({result: false});
 	}
 
-	let data = null;
-	switch (query.provider) {
-		case 'nicehash':
-			data = nicehash.getMostProfitableStratumsForQuery(query);
-			break;
-		case 'miningpoolhub':
-      data = miningpoolhub.getMostProfitableStratumsForQuery(query);
-			break;
-		case 'minecryptonight':
-      data = minecryptonight.getMostProfitableStratumsForQuery(query);
-      break;
-	}
-	if (data.length === 0) {
+  const providers = query.provider;
+
+  const profitabilities = [].concat.apply(
+  	[],
+		providers.map(provider => global[provider].getMostProfitableStratumsForQuery(query))
+	);
+  profitabilities.sort((a, b) => b.profitability - a.profitability);
+
+	if (profitabilities.length === 0) {
 		console.error(`[Query] :: nothing returned for query: \n${JSON.stringify(query, null, 2)}`);
 		return res.send({result: false});
 	}
@@ -67,16 +63,16 @@ function query(req, res, next) {
   const entry={
     date: moment().format('YYYY-MM-DD HH:mm:ss'),
     name: query.name,
-    algo: data[0].algorithm,
-    pool: query.provider + (data[0].symbol ? `-${data[0].symbol}` : ''),
-    profitability: data[0].profitability.toFixed(8)
+    algo: profitabilities[0].algorithm,
+    pool: profitabilities[0].provider + (profitabilities[0].symbol ? `-${profitabilities[0].symbol}` : ''),
+    profitability: profitabilities[0].profitability.toFixed(8)
   };
   if (configModule.logs.length===320) {
     configModule.logs.pop();
 	}
   configModule.logs.unshift(entry);
 
-  return res.send({result: data});
+  return res.send({result: profitabilities});
 }
 
 
