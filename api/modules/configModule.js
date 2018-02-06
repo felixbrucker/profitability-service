@@ -10,7 +10,7 @@ const config = module.exports = {
   config: {
     cryptonightPools: {
       'ITNS': {enabled: false, supportsSSL: false, url: 'pool.intense.hashvault.pro', port: 5555, user: '', pass: ''},
-      'XLC': {enabled: false, supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+      'XLC': {enabled: false, supportsSSL: true, url: 'xlc.dark-mine.su', port: 5555, sslPort: 1443, user: '', pass: ''},
       'ETN': {
         supportsSSL: true,
         url: '#REGION#.cryptonight-hub.miningpoolhub.com',
@@ -85,7 +85,7 @@ const config = module.exports = {
           if (!config.config.cryptonightPools) {
             config.config.cryptonightPools = {
               'ITNS': {enabled: false, supportsSSL: false, url: 'pool.intense.hashvault.pro', port: 5555, user: '', pass: ''},
-              'XLC': {enabled: false, supportsSSL: false, url: 'xlc.dark-mine.su', port: 5555, user: '', pass: ''},
+              'XLC': {enabled: false, supportsSSL: true, url: 'xlc.dark-mine.su', port: 5555, sslPort: 1443, user: '', pass: ''},
               'ETN': {
                 supportsSSL: true,
                 url: '#REGION#.cryptonight-hub.miningpoolhub.com',
