@@ -107,6 +107,15 @@ const config = module.exports = {
               'BCN': {enabled: false, supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
             };
           }
+          if (!config.config.cryptonightPools.DCY) {
+            config.config.cryptonightPools.DCY = {
+              supportsSSL: false,
+              url: 'poolmining1.dinastycoin.com',
+              port: 5555,
+              user: '',
+              pass: '',
+            };
+          }
         });
       } else if (err.code === 'ENOENT') {
         //default conf
