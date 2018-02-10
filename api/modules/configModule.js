@@ -110,7 +110,7 @@ const config = module.exports = {
           if (!config.config.cryptonightPools.DCY) {
             config.config.cryptonightPools.DCY = {
               supportsSSL: false,
-              url: 'poolmining1.dinastycoin.com',
+              url: 'poolmining2.dinastycoin.com',
               port: 5555,
               user: '',
               pass: '',
