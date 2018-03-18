@@ -79,7 +79,7 @@ module.exports = class Miningpoolhub extends BaseProvider {
         useDefaultDomain: obj.host === 'hub.miningpoolhub.com',
       }));
     } catch (err) {
-      console.error(`[Nicehash] :: Error getting profitability data: ${err.message}`);
+      console.error(`[Miningpoolhub] :: Error getting profitability data: ${err.message}`);
     }
   }
 };
