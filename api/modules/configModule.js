@@ -104,13 +104,33 @@ const config = module.exports = {
                 user: '',
                 pass: '',
               },
-              'BCN': {enabled: false, supportsSSL: false, url: 'bytecoin.uk', port: 7777, user: '', pass: ''},
             };
           }
           if (!config.config.cryptonightPools.DCY) {
             config.config.cryptonightPools.DCY = {
               supportsSSL: false,
               url: 'poolmining2.dinastycoin.com',
+              port: 5555,
+              user: '',
+              pass: '',
+            };
+          }
+          if (config.config.cryptonightPools.BCN) {
+            delete config.config.cryptonightPools.BCN;
+          }
+          if (!config.config.cryptonightPools.GRFT) {
+            config.config.cryptonightPools.GRFT = {
+              supportsSSL: false,
+              url: 'graftpool.net',
+              port: 6666,
+              user: '',
+              pass: '',
+            };
+          }
+          if (!config.config.cryptonightPools.IPBC) {
+            config.config.cryptonightPools.IPBC = {
+              supportsSSL: false,
+              url: 'support.ipbc.io',
               port: 5555,
               user: '',
               pass: '',
